@@ -1,0 +1,11 @@
+CC=gcc
+CFLAGS=-I.
+EXAMPLE_CONTENTS := $(shell cat file.txt)
+main: main.o hash_table.o
+	$(CC) -o main main.o hash_table.o
+
+main.o: main.c hash_table.h
+	$(CC) -c -o main.o main.c $(CFLAGS)
+
+hash_table.o: hash_table.c hash_table.h
+	$(CC) -c -o hash_table.o hash_table.c $(CFLAGS)
